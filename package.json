@@ -1,0 +1,18 @@
+{
+	"author": "FlyingFork",
+	"version": "1.0",
+	"server_scripts": [
+		"s_network.lua"
+	],
+	"client_scripts": [
+		"c_network.lua"
+	],
+	"files": [
+		"html/index.html",
+
+		"html/chart.min.js",
+		"html/script.js",
+		
+		"html/style.css"
+	]
+}
