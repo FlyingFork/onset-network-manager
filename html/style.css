@@ -1,33 +1,241 @@
-* {
-    font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
-    font-size: 16px;
+
+/* latin */
+@font-face {
+    font-family: 'Montserrat';
     font-style: normal;
-    line-height: 1.2;
-    text-align: center;
+    font-weight: 400;
+    src: url("Montserrat.woff2") format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+* {
+    margin: 0px;
+
+    font-family: "Montserrat";
+    font-size: 18px;
+    font-weight: 400px;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+
+    transition: color 0.25s;
+    user-select: none;
 }
 
 #background {
+    background-image: linear-gradient(to right, #151515, #181818, #1a1a1a, #1c1c1c, #1f1f1f);
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+
+    width: 1000px;
+    height: 500px;
+
     position: absolute;
-
-    left: 20px;
+    left: 50%;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translate(-50%, -50%);
 
-    background-color: rgb(31,31,31);
-    border-radius: 10px;
+    border-radius: 20px;
     padding: 10px;
 }
 
-#text {
+#nav {
+    background-color: rgb(21, 21, 21);
+
+    width: 200px;
+    height: 500px;
+
+    position: inherit;
+    left: 0px;
+    top: 0px;
+
+    border-radius: 20px 0px 0px 20px;
+    padding-right: 10px;
+    padding-bottom: 20px;
+}
+
+#nav #title {
+    color: #FAF7FF;
+    text-align: center;
+
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#title:hover, .item:hover {
+    color: #36A2EB;
+}
+
+.item {
+    color: #FAF7FF;
+    background-image: linear-gradient(to right, #0b0b0b, #0e0e0e, #111111, #131313, #151515);
+
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.item:hover {
+    cursor: pointer;
+}
+
+#content {
+    margin-left: 200px;
+
+    width: 800px;
+    height: 100%;
+}
+
+#charts {
+    width: 100%;
+    height: 100%;
+}
+
+#details {
+    width: 100%;
+    height: 100%;
+}
+
+#settings {
+    width: 100%;
+    height: 100%;
+}
+
+#content #title {
+    color: #FAF7FF;
+    text-align: center;
+
+    width: 100%;
+
+    font-size: 30px;
+}
+
+#send {
     position: absolute;
 
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
+    margin-left: 10px;
+    margin-top: 30px;
+}
 
-    background-color: rgb(31,31,31);
-    border-radius: 10px;
-    padding: 10px;
+#received {
+    position: absolute;
 
-    height: 400px;
+    margin-left: 440px;
+    margin-top: 30px;
+}
+
+.text {
+    color: #FAF7FF;
+}
+
+#textBox {
+    margin-left: 10px;
+    margin-top: 100px;
+
+    height: 100%;
+    width: 800px;
+}
+
+.container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    color: #FAF7FF;
+}
+
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #FAF7FF;
+}
+
+.container:hover input ~ .checkmark {
+    background-color: #36A2EB;
+}
+
+.container input:checked ~ .checkmark {
+    background-color: #FF6384;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+#checkboxes {
+    margin-left: 10px;
+    margin-top: 30px;
+}
+
+.slidecontainer {
+    margin-left: 10px;
+    margin-top: 20px;
+    width: 300px;
+}
+  
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 15px;
+    border-radius: 5px;
+    background: #FAF7FF;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+  
+.slider:hover {
+    opacity: 1;
+}
+  
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #36A2EB;
+    cursor: pointer;
+}
+  
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #36A2EB;
+    cursor: pointer;
 }

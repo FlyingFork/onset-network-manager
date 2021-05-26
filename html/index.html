@@ -1,14 +1,70 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
     <head>
+        <meta charset="UTF-8">
+        <title>Onset Network Manager</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <link rel="stylesheet" type="text/css" href="style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
 
     <body>
         <div id="background">
-            <canvas id="chart" width="400" height="400"></canvas>
-        </div>
+            <div id="nav">
+                <h1 id="title">Network Manager</h1>
 
-        <div id="text"></div>
+                <div id="contentNav">
+                    <div class="item" id="ChartsButton" onclick="clicked('charts', this);" style="color: #36A2EB;">Charts</div>
+                    <div class="item" id="DetailsButton" onclick="clicked('details', this);">Details</div>
+                    <div class="item" id="SettingsButton" onclick="clicked('settings', this);">Settings</div>
+                    <div class="item" id="CloseButton" onclick="ue.game.callevent('onNetworkClose')">Close</div>
+                </div>
+            </div>
+
+            <div id="content">
+                <div id="charts" style="display: block;">
+                    <h1 id="title">Charts</h1>
+
+                    <canvas id="send" width="350" height="350"></canvas>
+                    <canvas id="received" width="350" height="350"></canvas>
+                </div>
+
+                <div id="details" style="display: none;">
+                    <h1 id="title">Details</h1>
+
+                    <div id="textBox">
+                        <p class="text" id="packetlossTotal">Packet Loss Total: <span style="color: #FF6384;">LOADING</span></p>
+                        <p class="text" id="packetlossLastSecond">Packet Loss Last Second: <span style="color: #FF6384;">LOADING</span></p>
+                        <br>
+                        <p class="text" id="messagesInResendBuffer">Messages In Resend Buffer: <span style="color: #FF6384;">LOADING</span></p>
+                        <br>
+                        <p class="text" id="bytesResent">Bytes Resent: <span style="color: #FF6384;">LOADING</span></p>
+                        <p class="text" id="bytesSendTotal">Bytes Send Total: <span style="color: #FF6384;">LOADING</span></p>
+                        <p class="text" id="bytesResentTotal">Bytes Resent Total: <span style="color: #FF6384;">LOADING</span></p>
+                        <p class="text" id="bytesReceivedTotal">Bytes Received Total: <span style="color: #FF6384;">LOADING</span></p>
+                        <br>
+                        <p class="text" id="isLimitedByCongestionControl">Limited By Congestion Control: <span style="color: #FF6384;">LOADING</span></p>
+                        <p class="text" id="isLimitedByOutgoingBandwidthLimit">Limited By Outgoing Bandwidth Limit: <span style="color: #FF6384;">LOADING</span></p>
+                    </div>
+                </div>
+
+                <div id="settings" style="display: none;">
+                    <h1 id="title">Settings</h1>
+
+                    <div id="checkboxes">
+                        <label class="container">Focused 
+                            <input type="checkbox" checked="checked" onclick="ue.game.callevent('onNetworkFocus', JSON.stringify([this.checked]))">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+
+                    <div class="slidecontainer">
+                        <p style="color: #FAF7FF;">Alpha: <span id="demo"></span></p>
+                        <input type="range" min="10" max="100" value="100" class="slider" id="myRange">
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <script src="chart.min.js"></script>
         <script src="script.js"></script>
